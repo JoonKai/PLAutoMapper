@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PLAutoMapper" xmlns:views="clr-namespace:PLAutoMapper.Views" xmlns:layoutcontrol="clr-namespace:PLAutoMapper.Views.LayoutControl"
         mc:Ignorable="d"
-        Title="SettingWindow" Height="550" Width="700" WindowStyle="None" ResizeMode="NoResize">
+        Title="SettingWindow" Height="551" Width="700" WindowStyle="None" ResizeMode="NoResize">
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="20" ResizeBorderThickness="2"/>
     </WindowChrome.WindowChrome>

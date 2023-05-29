@@ -27,6 +27,9 @@
             <Style TargetType="{x:Type TextBox}">
                 <Setter Property="Background" Value="Transparent"/>
             </Style>
+            <Style TargetType="{x:Type GroupBox}">
+                <Setter Property="BorderThickness" Value="0.3"/>
+            </Style>
         </ResourceDictionary>
     </UserControl.Resources>
     <Grid Background="{StaticResource ColorDarkGray}">
