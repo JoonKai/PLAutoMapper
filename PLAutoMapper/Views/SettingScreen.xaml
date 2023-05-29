@@ -9,7 +9,7 @@
              xmlns:pag="clr-namespace:PLAutoMapperControl.Controls.PageControls;assembly=PLAutoMapperControl"
              xmlns:local="clr-namespace:PLAutoMapper.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="550" d:DesignWidth="900">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -29,6 +29,7 @@
             </Style>
             <Style TargetType="{x:Type GroupBox}">
                 <Setter Property="BorderThickness" Value="0.3"/>
+                <Setter Property="BorderBrush" Value="{StaticResource ColorOrange}"/>
             </Style>
         </ResourceDictionary>
     </UserControl.Resources>
@@ -54,7 +55,7 @@
                     </Grid.ColumnDefinitions>
                     <!--#region SettingTab 일반-1-->
                     <StackPanel Margin="4" Grid.Column="0" Orientation="Vertical">
-                        <GroupBox Header="네트워크 경로" BorderBrush="{StaticResource ColorOrange}" BorderThickness="1">
+                        <GroupBox Header="네트워크 경로">
                             <StackPanel>
                                 <Grid  Margin="2">
                                     <Grid.ColumnDefinitions>
@@ -117,7 +118,7 @@
                                 </Grid>
                             </StackPanel>
                         </GroupBox>
-                        <GroupBox Header="네트워크 접속 계정" BorderBrush="DarkBlue">
+                        <GroupBox Header="네트워크 접속 계정">
                             <StackPanel>
                                 <Grid  Margin="2">
                                     <Grid.ColumnDefinitions>
@@ -142,7 +143,7 @@
 
                             </StackPanel>
                         </GroupBox>
-                        <GroupBox Header="로컬 경로" BorderBrush="DarkBlue">
+                        <GroupBox Header="로컬 경로">
                             <StackPanel>
                                 <Grid  Margin="2">
                                     <Grid.ColumnDefinitions>
@@ -181,7 +182,7 @@
                     <!--#endregion-->
                     <!--#region SettingTab 일반 Col2-->
                     <StackPanel Margin="4" Grid.Column="1" Orientation="Vertical">
-                        <GroupBox Header="설비" BorderBrush="{StaticResource ColorOrange}" BorderThickness="1">
+                        <GroupBox Header="설비">
                             <StackPanel>
                                 <Grid  Margin="2">
                                     <Grid.ColumnDefinitions>
@@ -216,7 +217,7 @@
                     </StackPanel>
                     <!--#endregion-->
                     <!--#region SettingTab 일반-3-->
-                    <GroupBox Header="기타옵션" Grid.Column="2" BorderBrush="{StaticResource ColorOrange}" BorderThickness="1" Margin="4">
+                    <GroupBox Header="기타옵션" Grid.Column="2" Margin="4">
                         <StackPanel Margin="4" Orientation="Vertical">
                             <CheckBox Content="자동 삭제 켜기/끄기" Height="25" VerticalContentAlignment="Center" />
                             <CheckBox Content="휴지통보내기 켜기/끄기" Height="25" VerticalContentAlignment="Center" />
