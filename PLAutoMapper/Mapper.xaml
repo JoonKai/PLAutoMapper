@@ -1,0 +1,32 @@
+﻿<Window x:Class="PLAutoMapper.Mapper"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PLAutoMapper" xmlns:views="clr-namespace:PLAutoMapper.Views" xmlns:layoutcontrol="clr-namespace:PLAutoMapper.Views.LayoutControl"
+        mc:Ignorable="d"
+        Title="Mapper" Height="550" Width="700" WindowStyle="None" ResizeMode="NoResize">
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="20" ResizeBorderThickness="2"/>
+    </WindowChrome.WindowChrome>
+    <Window.Resources>
+        <Style TargetType="Grid" x:Key="GridProp">
+            <Setter Property="Background" Value="{StaticResource ColorPrimary}"/>
+        </Style>
+    </Window.Resources>
+    <Grid Style="{StaticResource GridProp}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="0.8"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.8"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+        <!--#endregion-->
+        <layoutcontrol:TitleBar Grid.Row="0" Title="PLAutoMapper"/>
+        <Grid Grid.Row="1" Background="{StaticResource ColorOrange}"/>
+        <views:MainScreen Grid.Row="2" Margin="3"/>
+        <Grid Grid.Row="3" Background="{StaticResource ColorOrange}"/>
+        <layoutcontrol:StatusBar Grid.Row="4"/>
+    </Grid>
+</Window>

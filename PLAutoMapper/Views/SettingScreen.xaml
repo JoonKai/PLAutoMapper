@@ -1,0 +1,471 @@
+﻿<UserControl x:Class="PLAutoMapper.Views.SettingScreen"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:ex="clr-namespace:PLAutoMapper.Enums"
+             xmlns:eb="clr-namespace:PLAutoMapperLib.Extensions;assembly=PLAutoMapperLib"
+             xmlns:con="clr-namespace:PLAutoMapperControl.Controls.BaseControls;assembly=PLAutoMapperControl"
+             xmlns:pag="clr-namespace:PLAutoMapperControl.Controls.PageControls;assembly=PLAutoMapperControl"
+             xmlns:local="clr-namespace:PLAutoMapper.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Styles/Controls/ControlThemes.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="{x:Type TabControl}">
+                <Setter Property="Background" Value="Transparent"/>
+            </Style>
+            <Style TargetType="{x:Type CheckBox}">
+                <Setter Property="Foreground" Value="White"/>
+            </Style>
+            <Style TargetType="{x:Type TextBlock}">
+                <Setter Property="Foreground" Value="White"/>
+            </Style>
+            <Style TargetType="{x:Type TextBox}">
+                <Setter Property="Background" Value="Transparent"/>
+            </Style>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid Background="{StaticResource ColorDarkGray}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Column="0" Grid.Row="0">
+            <StackPanel Orientation="Horizontal">
+                <Button Margin="0 2 2 2" Width="60" Height="22" Content="저장" Style="{StaticResource ButtonStyle1}"/>
+                <Button Margin="0 2 2 2" Width="60" Height="22" Content="취소" Style="{StaticResource ButtonStyle1}"/>
+            </StackPanel>
+        </Grid>
+        <TabControl Grid.Row="1" Grid.Column="0">
+            <!--#region SettingTab 일반-->
+            <TabItem Header="일반" Margin="-3 0 0 0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="1.3*"/>
+                        <ColumnDefinition Width="1.5*"/>
+                    </Grid.ColumnDefinitions>
+                    <!--#region SettingTab 일반-1-->
+                    <StackPanel Margin="4" Grid.Column="0" Orientation="Vertical">
+                        <GroupBox Header="네트워크 경로" BorderBrush="{StaticResource ColorOrange}" BorderThickness="1">
+                            <StackPanel>
+                                <Grid  Margin="2">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.8*"/>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="2*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="로우 경로(1) :" />
+                                    <TextBlock Grid.Column="1" VerticalAlignment="Center" Text=" : "/>
+                                    <ComboBox x:Name="cbRaw1" Grid.Column="2" VerticalAlignment="Center" ItemsSource="{Binding NetworkDriverList}">
+                                        <ComboBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding NetDriver}"/>
+                                            </DataTemplate>
+                                        </ComboBox.ItemTemplate>
+                                    </ComboBox>
+                                </Grid>
+                                <Grid  Margin="2">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.8*"/>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="2*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="로우 경로(2) :"/>
+                                    <TextBlock Grid.Column="1" VerticalAlignment="Center" Text=" : "/>
+                                    <ComboBox x:Name="cbRaw2" Grid.Column="3" VerticalAlignment="Center"/>
+                                </Grid>
+                                <Grid Margin="2">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.8*"/>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="2*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="와칭 경로" />
+                                    <TextBlock Grid.Column="1" VerticalAlignment="Center" Text=" : "/>
+                                    <ComboBox x:Name="cbWatching" Grid.Column="2" VerticalAlignment="Center"/>
+                                </Grid>
+                                <Grid Height="120" Margin="0 5 0 0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="4*"/>
+                                        <RowDefinition Height="1*"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBox x:Name="txbNetworkPath" Margin="1" Grid.Row="0" BorderBrush="DarkMagenta" BorderThickness="1"/>
+                                    <Grid Margin="0 0 0 0"  Grid.Row="2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="1*"/>
+                                            <ColumnDefinition Width="1*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Button x:Name="AddNetworkPath" Click="AddNetworkPath_Click"  Grid.Column="0" Content="추가" Style="{StaticResource ButtonStyle1}"/>
+                                        <Button x:Name="DeleteNetworkPath" Click="DeleteNetworkPath_Click" Grid.Column="1" Content="제거" Style="{StaticResource ButtonStyle1}"/>
+                                    </Grid>
+                                    <ListBox x:Name="ViewNetWorkPath" Margin="1" Grid.Row="1" BorderBrush="Black" ScrollViewer.VerticalScrollBarVisibility="Hidden" BorderThickness="1" ItemsSource="{Binding NetworkDriverList}">
+                                        <ListBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Margin="0.5" FontSize="11" Text="{Binding NetDriver}" Foreground="Blue"/>
+                                            </DataTemplate>
+                                        </ListBox.ItemTemplate>
+                                    </ListBox>
+                                </Grid>
+                            </StackPanel>
+                        </GroupBox>
+                        <GroupBox Header="네트워크 접속 계정" BorderBrush="DarkBlue">
+                            <StackPanel>
+                                <Grid  Margin="2">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.8*"/>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="2*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="아이디"/>
+                                    <TextBlock Grid.Column="1" VerticalAlignment="Center" Text=" : "/>
+                                    <TextBox Grid.Column="3" Width="100" HorizontalAlignment="Left"/>
+                                </Grid>
+                                <Grid  Margin="2">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.8*"/>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="2*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="비밀번호"/>
+                                    <TextBlock Grid.Column="1" VerticalAlignment="Center" Text=" : "/>
+                                    <TextBox Grid.Column="3" Width="100" HorizontalAlignment="Left"/>
+                                </Grid>
+
+                            </StackPanel>
+                        </GroupBox>
+                        <GroupBox Header="로컬 경로" BorderBrush="DarkBlue">
+                            <StackPanel>
+                                <Grid  Margin="2">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.8*"/>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="2*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="백업 경로"/>
+                                    <TextBlock Grid.Column="1" VerticalAlignment="Center" Text=" : "/>
+                                    <ComboBox ItemsSource="{eb:EnumBindingSource ex:LocalDrivers}" Grid.Column="3" Width="100" HorizontalAlignment="Left"/>
+                                                           
+                                </Grid>
+                                <Grid  Margin="2">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.8*"/>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="2*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="복사 옵션"/>
+                                    <TextBlock Grid.Column="1" VerticalAlignment="Center" Text=" : "/>
+                                    <ComboBox ItemsSource="{eb:EnumBindingSource ex:DateNames}" Grid.Column="3" Width="100" HorizontalAlignment="Left"/>
+                                </Grid>
+                                <Grid  Margin="2">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.8*"/>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="2*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="축 글자크기"/>
+                                    <TextBlock Grid.Column="1" VerticalAlignment="Center" Text=" : "/>
+                                    <con:EPINumericUpDown Grid.Column="2" Height="20" Width="100" HorizontalAlignment="Left"/>
+                                </Grid>
+                            </StackPanel>
+                        </GroupBox>
+                    </StackPanel>
+                    <!--#endregion-->
+                    <!--#region SettingTab 일반 Col2-->
+                    <StackPanel Margin="4" Grid.Column="1" Orientation="Vertical">
+                        <GroupBox Header="설비" BorderBrush="{StaticResource ColorOrange}" BorderThickness="1">
+                            <StackPanel>
+                                <Grid  Margin="2">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1.5*"/>
+                                        <ColumnDefinition Width="1.8*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="설비명       :" />
+                                    <TextBlock Grid.Column="1" VerticalAlignment="Center" Text=" : "/>
+                                    <ComboBox Grid.Column="2" Margin="1" VerticalAlignment="Center" >
+                                        <ComboBoxItem Content="\\192.168.205.83\EPI001"/>
+                                    </ComboBox>
+                                </Grid>
+                                <Grid Margin="0 5 0 0" Height="150">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1.5*"/>
+                                        <ColumnDefinition Width="1.8*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="1*"/>
+                                    </Grid.RowDefinitions>
+                                    <StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="0">
+                                        <TextBox Margin="1" BorderBrush="Black" BorderThickness="1"/>
+                                        <Button Content="추가" Style="{StaticResource ButtonStyle1}"/>
+                                        <Button Content="제거" Style="{StaticResource ButtonStyle1}"/>
+                                    </StackPanel>
+                                    <ListBox Margin="2 1 2 1" Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" BorderBrush="Black" BorderThickness="1"/>
+                                </Grid>
+                            </StackPanel>
+                        </GroupBox>
+
+                    </StackPanel>
+                    <!--#endregion-->
+                    <!--#region SettingTab 일반-3-->
+                    <GroupBox Header="기타옵션" Grid.Column="2" BorderBrush="{StaticResource ColorOrange}" BorderThickness="1" Margin="4">
+                        <StackPanel Margin="4" Orientation="Vertical">
+                            <CheckBox Content="자동 삭제 켜기/끄기" Height="25" VerticalContentAlignment="Center" />
+                            <CheckBox Content="휴지통보내기 켜기/끄기" Height="25" VerticalContentAlignment="Center" />
+                            <CheckBox Content="기타" Height="25" VerticalContentAlignment="Center" />
+                            <CheckBox Content="기타" Height="25" VerticalContentAlignment="Center" />
+                        </StackPanel>
+                    </GroupBox>
+                    <!--#endregion-->
+                </Grid>
+            </TabItem>
+            <!--#endregion-->
+            <!--#region SettingTab 데이터베이스-->
+            <TabItem Header="데이터베이스">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Margin="4" Grid.Column="0" Orientation="Vertical">
+                        <StackPanel Height="25" Orientation="Horizontal">
+                            <TextBlock VerticalAlignment="Center" Text="DATABASE" Margin="2" Width="80"/>
+                            <TextBlock VerticalAlignment="Center" Text=":" Margin="2" Width="5"/>
+                            <TextBox Width="100" Margin="3"/>
+                        </StackPanel>
+                        <StackPanel Height="25" Orientation="Horizontal">
+                            <TextBlock VerticalAlignment="Center" Text="PORT" Margin="2" Width="80"/>
+                            <TextBlock VerticalAlignment="Center" Text=":" Margin="2" Width="5"/>
+                            <TextBox Width="100" Margin="3"/>
+                        </StackPanel>
+                        <StackPanel Height="25" Orientation="Horizontal">
+                            <TextBlock VerticalAlignment="Center" Text="ID" Margin="2" Width="80"/>
+                            <TextBlock VerticalAlignment="Center" Text=":" Margin="2" Width="5"/>
+                            <TextBox Width="100" Margin="3"/>
+                        </StackPanel>
+                        <StackPanel Height="25" Orientation="Horizontal">
+                            <TextBlock VerticalAlignment="Center" Text="PASSWORD" Margin="2" Width="80"/>
+                            <TextBlock VerticalAlignment="Center" Text=":" Margin="2" Width="5"/>
+                            <TextBox Width="100" Margin="3"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <!--#endregion-->
+            <!--#region SettingTab MOCVD-->
+            <TabItem Header="MOCVD">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1.2*"/>
+                        <ColumnDefinition Width="1.2*"/>
+                        <ColumnDefinition Width="1.2*"/>
+                        <ColumnDefinition Width="1.2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="3.5*"/>
+                    </Grid.RowDefinitions>
+                    <!--#region 설비작성1-->
+                    <GroupBox Header="설비위치" BorderBrush="DarkBlue" Margin="2" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2">
+                        <Grid  Margin="0 0 0 0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="20"/>
+                            </Grid.RowDefinitions>
+                            <TextBox Margin="2 0 2 0" Grid.Row="0" BorderBrush="DarkMagenta" BorderThickness="1"/>
+                            <Grid Grid.Row="2" Margin="1 0 1 0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <Button Grid.Column="0" Content="추가" Style="{StaticResource ButtonStyle1}"/>
+                                <Button Grid.Column="1" Content="제거" Style="{StaticResource ButtonStyle1}"/>
+                            </Grid>
+                            <ListBox Margin="2" Grid.Row="1" BorderBrush="Black" BorderThickness="1"/>
+                        </Grid>
+                    </GroupBox>
+                    <!--#endregion-->
+                    <!--#region 설비작성1-->
+                    <GroupBox Header="MOCVD" BorderBrush="DarkGreen" Margin="2" Grid.Column="0" Grid.Row="2" Grid.RowSpan="2">
+                        <Grid  Margin="0 0 0 0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="20"/>
+                            </Grid.RowDefinitions>
+                            <TextBox Margin="2 0 2 0" Grid.Row="0" BorderBrush="DarkOrange" BorderThickness="1"/>
+                            <Grid Grid.Row="2" Margin="1 0 1 0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <Button Grid.Column="0" Content="추가" Style="{StaticResource ButtonStyle1}"/>
+                                <Button Grid.Column="1" Content="제거" Style="{StaticResource ButtonStyle1}"/>
+                            </Grid>
+                            <ListBox Margin="2" Grid.Row="1" BorderBrush="Black" BorderThickness="1"/>
+                        </Grid>
+                    </GroupBox>
+                    <!--#endregion-->
+                    <!--#region Json Open/Close-->
+                    <GroupBox Header="Save" BorderBrush="DarkGray" Margin="2" Grid.Column="1" Grid.ColumnSpan="6">
+                        <StackPanel Orientation="Vertical" Grid.Column="2" Grid.Row="0" Margin="2">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="80"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Button Grid.Column="0" Content="Open Json" Style="{StaticResource ButtonStyle1}"/>
+                                <TextBox Grid.Column="1" Margin="1" IsReadOnly="True"/>
+                            </Grid>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Content="Save Json" Width="80" Height="20" Style="{StaticResource ButtonStyle1}"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </GroupBox>
+                    <!--#endregion-->
+                    <!--#region Select Item-->
+                    <GroupBox Header="Item" BorderBrush="DarkGray" Margin="2" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="6">
+                        <StackPanel Orientation="Vertical" Grid.Column="2" Grid.Row="0" Margin="2">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="80"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="설비 위치" Grid.Column="0"/>
+                                <TextBox Grid.Column="1" Margin="1"/>
+                                <TextBlock Text="🥷설비 위치" Grid.Column="2"/>
+                            </Grid>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="80"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="설비명" Grid.Column="0"/>
+                                <TextBox Grid.Column="1" Margin="1"/>
+                                <TextBlock Text="😅선택된 설비명" Grid.Column="2"/>
+                            </Grid>
+                        </StackPanel>
+                    </GroupBox>
+                    <!--#endregion-->
+                    <!--#region 설비 리스트-->
+                    <GroupBox Header="B동" Margin="2" BorderBrush="Brown" Grid.Column="1" Grid.Row="2">
+                        <Grid  Margin="0 0 0 0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="20"/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="2" Margin="1 0 1 0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <Button Grid.Column="0" Content="추가" Style="{StaticResource ButtonStyle1}"/>
+                                <Button Grid.Column="1" Content="제거" Style="{StaticResource ButtonStyle1}"/>
+                            </Grid>
+                            <ListView Margin="2" Grid.Row="0" BorderBrush="Black" BorderThickness="1"/>
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox Header="C동" Margin="2" BorderBrush="MediumSlateBlue" Grid.Column="2" Grid.Row="2">
+                        <Grid  Margin="0 0 0 0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="20"/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="2" Margin="1 0 1 0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <Button Grid.Column="0" Content="추가" Style="{StaticResource ButtonStyle1}"/>
+                                <Button Grid.Column="1" Content="제거" Style="{StaticResource ButtonStyle1}"/>
+                            </Grid>
+                            <ListView Margin="2" Grid.Row="0" BorderBrush="Black" BorderThickness="1"/>
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox Header="D동" Margin="2" BorderBrush="Fuchsia" Grid.Column="3" Grid.Row="2">
+                        <Grid  Margin="0 0 0 0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="20"/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="2" Margin="1 0 1 0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <Button Grid.Column="0" Content="추가" Style="{StaticResource ButtonStyle1}"/>
+                                <Button Grid.Column="1" Content="제거" Style="{StaticResource ButtonStyle1}"/>
+                            </Grid>
+                            <ListView Margin="2" Grid.Row="0" BorderBrush="Black" BorderThickness="1"/>
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox Header="개발" Margin="2" BorderBrush="ForestGreen" Grid.Column="4" Grid.Row="2">
+                        <Grid  Margin="0 0 0 0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="20"/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="2" Margin="1 0 1 0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <Button Grid.Column="0" Content="추가" Style="{StaticResource ButtonStyle1}"/>
+                                <Button Grid.Column="1" Content="제거" Style="{StaticResource ButtonStyle1}"/>
+                            </Grid>
+                            <ListView Margin="2" Grid.Row="0" BorderBrush="Black" BorderThickness="1"/>
+                        </Grid>
+                    </GroupBox>
+                    <!--#endregion-->
+                </Grid>
+            </TabItem>
+            <!--#endregion-->
+            <!--#region SettingTab EPIFolderTree-->
+            <TabItem Header="폴더생성기">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <CheckBox Content="1 단계" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center"/>
+                    <CheckBox Content="2 단계" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center"/>
+                    <CheckBox Content="3 단계" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Center"/>
+                    <CheckBox Content="4 단계" Grid.Column="3" Grid.Row="1" HorizontalAlignment="Center"/>
+                    <CheckBox Content="5 단계" Grid.Column="4" Grid.Row="1" HorizontalAlignment="Center"/>
+                    <CheckBox Content="6 단계" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Center"/>
+                    <CheckBox Content="7 단계" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Center"/>
+                    <CheckBox Content="8 단계" Grid.Column="2" Grid.Row="3" HorizontalAlignment="Center"/>
+                    <CheckBox Content="9 단계" Grid.Column="3" Grid.Row="3" HorizontalAlignment="Center"/>
+                    <CheckBox Content="10 단계" Grid.Column="4" Grid.Row="3" HorizontalAlignment="Center"/>
+                </Grid>
+            </TabItem>
+            <!--#endregion-->
+            <!--#region SettingTab ETC-->
+            <TabItem Header="기타">
+                <pag:EPIFolderMakerPage/>
+            </TabItem>
+            <!--#endregion-->
+        </TabControl>
+    </Grid>
+</UserControl>

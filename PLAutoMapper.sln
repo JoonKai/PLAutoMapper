@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32407.343
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PLAutoMapper", "PLAutoMapper\PLAutoMapper.csproj", "{38456BC4-04FA-43FF-8513-1449A120BB4F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PLAutoMapperLib", "PLAutoMapperLib\PLAutoMapperLib.csproj", "{0507FA77-FF95-4C9D-A42F-26ADA58B6270}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PLAutoMapperControl", "PLAutoMapperControl\PLAutoMapperControl.csproj", "{185190AE-2B1F-4E26-9C21-EC7AD5369D04}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{38456BC4-04FA-43FF-8513-1449A120BB4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38456BC4-04FA-43FF-8513-1449A120BB4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38456BC4-04FA-43FF-8513-1449A120BB4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38456BC4-04FA-43FF-8513-1449A120BB4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0507FA77-FF95-4C9D-A42F-26ADA58B6270}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0507FA77-FF95-4C9D-A42F-26ADA58B6270}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0507FA77-FF95-4C9D-A42F-26ADA58B6270}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0507FA77-FF95-4C9D-A42F-26ADA58B6270}.Release|Any CPU.Build.0 = Release|Any CPU
+		{185190AE-2B1F-4E26-9C21-EC7AD5369D04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{185190AE-2B1F-4E26-9C21-EC7AD5369D04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{185190AE-2B1F-4E26-9C21-EC7AD5369D04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{185190AE-2B1F-4E26-9C21-EC7AD5369D04}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4C6B1179-5DA8-4C50-AF92-D7D70F888AB6}
+	EndGlobalSection
+EndGlobal
