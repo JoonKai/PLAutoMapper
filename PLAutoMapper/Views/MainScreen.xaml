@@ -46,7 +46,7 @@
         <Menu Grid.Row="0" Background="Transparent">
             <MenuItem Header="파일"/>
             <MenuItem Header="환경설정">
-                <MenuItem x:Name="settingOpen" Click="settingOpen_Click"  Header="옵션" Foreground="Black" FontWeight="Light"/>
+                <MenuItem x:Name="settingOpen" Command="{Binding ShowSettingViewCommand}" Header="옵션" Foreground="Black" FontWeight="Light"/>
             </MenuItem>
             <MenuItem Header="기타"/>
         </Menu>
@@ -105,7 +105,7 @@
             <TextBox x:Name="susTextbox1" Grid.Column="1" Grid.Row="0" IsReadOnly="True"/>
             <Button x:Name="susOpen1" Click="susOpen1_Click" Content="Open" Style="{StaticResource ButtonStyle1}" Grid.Column="2" Grid.Row="0"/>
             <TextBlock Text="Susceptor 2 " Grid.Column="0" Grid.Row="1" VerticalAlignment="Center"/>
-            <TextBox x:Name="susTextbox2"  Grid.Column="1" Grid.Row="1" IsReadOnly="True"/>
+            <TextBox x:Name="susTextbox2" Text="{Binding TestItem}"  Grid.Column="1" Grid.Row="1" IsReadOnly="True"/>
             <Button  x:Name="susOpen2" Click="susOpen2_Click" Content="Open" Style="{StaticResource ButtonStyle1}" Grid.Column="2" Grid.Row="1"/>
             <TextBlock Text="Susceptor 3 " Grid.Column="0" Grid.Row="2" VerticalAlignment="Center"/>
             <TextBox x:Name="susTextbox3"  Grid.Column="1" Grid.Row="2" IsReadOnly="True"/>

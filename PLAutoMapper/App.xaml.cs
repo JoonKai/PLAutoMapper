@@ -1,4 +1,8 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
+using PLAutoMapper.Services;
+using PLAutoMapper.ViewModels;
+using PLAutoMapper.Views;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -14,25 +18,39 @@ namespace PLAutoMapper
     /// </summary>
     public partial class App : Application
     {
-        Mutex mutex;
+        private IServiceProvider _services = null;
+        private IServiceProvider ConfigurationService()
+        {
+            IServiceCollection services = new ServiceCollection();
 
-        /// <summary>
-        /// 중복 실행 방지 코드
-        /// </summary>
-        /// <param name="e"></param>
+            //Views
+            services.AddSingleton<EPIMainView>();
+            services.AddTransient<EPISettingView>();
+            services.AddTransient<MainScreen>();
+
+            //Service
+            services.AddSingleton<IViewService, ViewService>();
+
+            //ViewModel
+            services.AddSingleton<EPIMainViewModel>();
+            services.AddTransient<EPISettingViewModel>();
+            services.AddTransient<MainScreenViewModel>();
+
+            return services.BuildServiceProvider();
+
+        }
+
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-
-            string mutexName = "program";
-            bool createNew;
-
-            mutex = new Mutex(true, mutexName, out createNew);
-
-            if (!createNew)
-            {
-                Shutdown();
-            }
+            var viewService = (IViewService)_services.GetService(typeof(IViewService));
+            viewService.ShowMainView();
         }
+
+        public App()
+        {
+            _services = ConfigurationService();
+        }
+
     }
 }

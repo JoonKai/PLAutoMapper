@@ -12,14 +12,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace PLAutoMapper
+namespace PLAutoMapper.Views
 {
     /// <summary>
-    /// SettingWindow.xaml에 대한 상호 작용 논리
+    /// EPIMainView.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class SettingWindow : Window
+    public partial class EPIMainView : Window
     {
-        public SettingWindow()
+        public EPIMainView()
         {
             InitializeComponent();
         }

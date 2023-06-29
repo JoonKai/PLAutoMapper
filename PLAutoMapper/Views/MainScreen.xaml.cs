@@ -1,6 +1,7 @@
 ﻿using EMPL.data;
 using EMPL.susceptor;
 using Microsoft.Win32;
+using PLAutoMapper.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -28,13 +29,7 @@ namespace PLAutoMapper.Views
         {
             InitializeComponent();
         }
-        #region 이벤트
-        private void settingOpen_Click(object sender, RoutedEventArgs e)
-        {
-            SettingWindow settingWindow = new SettingWindow();
-            settingWindow.ShowDialog();
-        }
-        #endregion
+        
         private void plplusOpen_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
