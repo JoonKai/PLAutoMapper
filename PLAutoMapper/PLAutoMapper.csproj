@@ -111,7 +111,6 @@
     <Compile Include="Services\ViewService.cs" />
     <Compile Include="ViewModels\PLMapperSettingsWindowViewModel.cs" />
     <Compile Include="ViewModels\PLMapperViewModel.cs" />
-    <Compile Include="ViewModels\SettingViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Views\LayoutControl\StatusBar.xaml.cs">
       <DependentUpon>StatusBar.xaml</DependentUpon>
@@ -122,17 +121,11 @@
     <Compile Include="Views\MainControl.xaml.cs">
       <DependentUpon>MainControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\MainScreen.xaml.cs">
-      <DependentUpon>MainScreen.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\PLMapper.xaml.cs">
       <DependentUpon>PLMapper.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PLMapperSettingsWindow.xaml.cs">
       <DependentUpon>PLMapperSettingsWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\SettingScreen.xaml.cs">
-      <DependentUpon>SettingScreen.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
@@ -162,19 +155,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\MainScreen.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\PLMapper.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\PLMapperSettingsWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\SettingScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
