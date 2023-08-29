@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="PLAutoMapper.Views.MainScreen"
+﻿<UserControl x:Class="PLAutoMapper.Views.MainControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,7 +6,7 @@
              xmlns:pl="clr-namespace:PLATO.ctrl;assembly=PLATO"
              xmlns:local="clr-namespace:PLAutoMapper.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="550" d:DesignWidth="700">
+             d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -34,7 +34,6 @@
     </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="20"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="100"/>
@@ -43,20 +42,13 @@
             <ColumnDefinition Width="120"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Menu Grid.Row="0" Background="Transparent">
-            <MenuItem Header="파일"/>
-            <MenuItem Header="환경설정">
-                <MenuItem x:Name="settingOpen" Header="옵션" Foreground="Black" FontWeight="Light"/>
-            </MenuItem>
-            <MenuItem Header="기타"/>
-        </Menu>
         <!--#region 맵뷰어-->
-        <Border Grid.Column="0" Grid.Row="1">
+        <Border Grid.Column="0" Grid.Row="0">
             <Grid>
-                <ListView/>
+
             </Grid>
         </Border>
-        <Border Grid.Column="1" Grid.Row="1" Background="White">
+        <Border Grid.Column="1" Grid.Row="0" Background="White">
             <Grid Margin="3">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -81,40 +73,42 @@
                         <pl:RangeMeter BorderStyle="FixedSingle" BackColor="White"/>
                     </WindowsFormsHost>
                     <Grid Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Background="{StaticResource ColorWhite}">
-                        
+
                     </Grid>
                 </Grid>
             </Grid>
         </Border>
         <!--#endregion-->
         <!--#region Sus/맵오픈-->
-        <Grid Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="5"/>
-                <RowDefinition Height="1*"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="120"/>
-                <ColumnDefinition/>
-                <ColumnDefinition Width="80"/>
-            </Grid.ColumnDefinitions>
-            <TextBlock Text="Susceptor 1 " Grid.Column="0" Grid.Row="0" VerticalAlignment="Center"/>
-            <TextBox x:Name="susTextbox1" Grid.Column="1" Grid.Row="0" IsReadOnly="True"/>
-            <Button x:Name="susOpen1" Content="Open" Style="{StaticResource ButtonStyle1}" Grid.Column="2" Grid.Row="0"/>
-            <TextBlock Text="Susceptor 2 " Grid.Column="0" Grid.Row="1" VerticalAlignment="Center"/>
-            <TextBox x:Name="susTextbox2"  Grid.Column="1" Grid.Row="1" IsReadOnly="True"/>
-            <Button  x:Name="susOpen2" Content="Open" Style="{StaticResource ButtonStyle1}" Grid.Column="2" Grid.Row="1"/>
-            <TextBlock Text="Susceptor 3 " Grid.Column="0" Grid.Row="2" VerticalAlignment="Center"/>
-            <TextBox x:Name="susTextbox3"  Grid.Column="1" Grid.Row="2" IsReadOnly="True"/>
-            <Button  x:Name="susOpen3" Content="Open" Style="{StaticResource ButtonStyle1}" Grid.Column="2" Grid.Row="2"/>
-            <Separator Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Background="{StaticResource ColorWhite}"/>
-            <TextBlock Text="PL+ File 열기 :" Grid.Column="0" Grid.Row="4" VerticalAlignment="Center"/>
-            <TextBox x:Name="plplusTextbox" Grid.Column="1" Grid.Row="4" IsReadOnly="True"/>
-            <Button x:Name="plplusOpen"  Content="Open" Style="{StaticResource ButtonStyle1}" Grid.Column="2" Grid.Row="4"/>
-        </Grid>
+        <Border Margin="0 2 0 0" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
+            <Grid Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="5"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="120"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="80"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Susceptor 1 " Grid.Column="0" Grid.Row="0" VerticalAlignment="Center"/>
+                <TextBox x:Name="susTextbox1" Grid.Column="1" Grid.Row="0" IsReadOnly="True"/>
+                <Button x:Name="susOpen1" Content="Open" Style="{StaticResource ButtonStyle1}" Grid.Column="2" Grid.Row="0"/>
+                <TextBlock Text="Susceptor 2 " Grid.Column="0" Grid.Row="1" VerticalAlignment="Center"/>
+                <TextBox x:Name="susTextbox2"  Grid.Column="1" Grid.Row="1" IsReadOnly="True"/>
+                <Button  x:Name="susOpen2" Content="Open" Style="{StaticResource ButtonStyle1}" Grid.Column="2" Grid.Row="1"/>
+                <TextBlock Text="Susceptor 3 " Grid.Column="0" Grid.Row="2" VerticalAlignment="Center"/>
+                <TextBox x:Name="susTextbox3"  Grid.Column="1" Grid.Row="2" IsReadOnly="True"/>
+                <Button  x:Name="susOpen3" Content="Open" Style="{StaticResource ButtonStyle1}" Grid.Column="2" Grid.Row="2"/>
+                <Separator Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Background="{StaticResource ColorWhite}"/>
+                <TextBlock Text="PL+ File 열기 :" Grid.Column="0" Grid.Row="4" VerticalAlignment="Center"/>
+                <TextBox x:Name="plplusTextbox" Grid.Column="1" Grid.Row="4" IsReadOnly="True"/>
+                <Button x:Name="plplusOpen" Content="Open" Style="{StaticResource ButtonStyle1}" Grid.Column="2" Grid.Row="4"/>
+            </Grid>
+        </Border>
         <!--#endregion-->
     </Grid>
 </UserControl>

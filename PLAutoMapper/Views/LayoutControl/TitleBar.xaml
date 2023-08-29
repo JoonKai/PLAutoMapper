@@ -26,6 +26,7 @@
         </Style>
     </UserControl.Resources>
     <DockPanel x:Name="pnlTitle" LastChildFill="False">
+        <Image Source="../../flickr.ico" Width="15" Height="15" Margin="4 1 1 1"/>
         <TextBlock Foreground="DarkOrange" FontWeight="Bold" FontSize="13" Margin="5 0 0 0 "/>
         <Button x:Name="btnExit" Margin="{Binding WinState, ElementName=root, Converter={StaticResource WindowStateMarginConverter},ConverterParameter=Exit}">
             <fa6:SvgAwesome Icon="Solid_Xmark"/>
