@@ -15,6 +15,7 @@ namespace PLAutoMapper.Services
 
         void ShowPLMapper();
         void ShowPLMapperSetting();
+        void SetMainControl();
 
     }
 }

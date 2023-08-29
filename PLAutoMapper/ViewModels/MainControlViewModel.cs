@@ -7,14 +7,11 @@ namespace PLAutoMapper.ViewModels
 {
     public class MainControlViewModel : ViewModelBase
     {
-        private readonly IViewService _services;
-
-
-        public MainControlViewModel(IViewService services)
+        public MainControlViewModel()
         {
-            this._services = services;
+            
         }
-        public ICommand SusOpen =>new RelayCommand<object>(OpenSus);
+        public ICommand SusOpen => new RelayCommand<object>(OpenSus);
 
         private void OpenSus(object _)
         {

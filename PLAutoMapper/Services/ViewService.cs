@@ -23,6 +23,10 @@ namespace PLAutoMapper.Services
         {
             ShowView<PLMapper, PLMapperViewModel>();
         }
+        public void SetMainControl()
+        {
+            SetControl<MainControl, MainControlViewModel>();
+        }
 
         public void ShowPLMapperSetting()
         {
@@ -78,6 +82,7 @@ namespace PLAutoMapper.Services
             view.DataContext = viewModel;
             view.Show();
         }
+
         #endregion
     }
 }

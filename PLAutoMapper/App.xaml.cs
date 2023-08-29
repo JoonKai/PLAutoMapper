@@ -41,9 +41,8 @@ namespace PLAutoMapper
         {
             base.OnStartup(e);
             var viewService = (IViewService)_services.GetService(typeof(IViewService));
-            viewService.SetControl<MainControl, MainControlViewModel>();
             viewService.ShowPLMapper();
-
+            viewService.SetMainControl();
 
             //string mutexName = "program";
             //bool createNew;
