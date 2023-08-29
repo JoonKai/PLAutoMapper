@@ -8,16 +8,18 @@ namespace PLAutoMapper.ViewModels
     public class PLMapperViewModel : ViewModelBase
     {
         private readonly IViewService _services;
-
-        public ICommand ShowPLMapperSettingsWindow => new RelayCommand<object>(ShowSettingsWindow);
-
         public PLMapperViewModel(IViewService services)
         {
             this._services = services;
         }
+        #region 커맨드
+        public ICommand ShowPLMapperSettingsWindow => new RelayCommand<object>(ShowSettingsWindow);
+        #endregion
+        #region 커맨드 메소드
         private void ShowSettingsWindow(object obj)
         {
             _services.ShowPLMapperSetting();
         }
+        #endregion
     }
 }

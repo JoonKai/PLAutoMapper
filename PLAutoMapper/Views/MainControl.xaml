@@ -96,13 +96,13 @@
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="Susceptor 1 " Grid.Column="0" Grid.Row="0" VerticalAlignment="Center"/>
                 <TextBox x:Name="susTextbox1" Grid.Column="1" Grid.Row="0" IsReadOnly="True"/>
-                <Button x:Name="susOpen1" Content="Open" Style="{StaticResource ButtonStyle1}" Grid.Column="2" Grid.Row="0"/>
+                <Button x:Name="susOpen1" Command="{Binding SusOpen}" Content="Open" Style="{StaticResource ButtonStyle1}" Grid.Column="2" Grid.Row="0"/>
                 <TextBlock Text="Susceptor 2 " Grid.Column="0" Grid.Row="1" VerticalAlignment="Center"/>
                 <TextBox x:Name="susTextbox2"  Grid.Column="1" Grid.Row="1" IsReadOnly="True"/>
-                <Button  x:Name="susOpen2" Content="Open" Style="{StaticResource ButtonStyle1}" Grid.Column="2" Grid.Row="1"/>
+                <Button  x:Name="susOpen2" Command="{Binding SusOpen}" Content="Open" Style="{StaticResource ButtonStyle1}" Grid.Column="2" Grid.Row="1"/>
                 <TextBlock Text="Susceptor 3 " Grid.Column="0" Grid.Row="2" VerticalAlignment="Center"/>
                 <TextBox x:Name="susTextbox3"  Grid.Column="1" Grid.Row="2" IsReadOnly="True"/>
-                <Button  x:Name="susOpen3" Content="Open" Style="{StaticResource ButtonStyle1}" Grid.Column="2" Grid.Row="2"/>
+                <Button  x:Name="susOpen3" Command="{Binding SusOpen}" Content="Open" Style="{StaticResource ButtonStyle1}" Grid.Column="2" Grid.Row="2"/>
                 <Separator Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Background="{StaticResource ColorWhite}"/>
                 <TextBlock Text="PL+ File 열기 :" Grid.Column="0" Grid.Row="4" VerticalAlignment="Center"/>
                 <TextBox x:Name="plplusTextbox" Grid.Column="1" Grid.Row="4" IsReadOnly="True"/>

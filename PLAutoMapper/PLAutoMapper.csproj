@@ -109,6 +109,7 @@
     <Compile Include="Services\IParameterReceiver.cs" />
     <Compile Include="Services\IViewService.cs" />
     <Compile Include="Services\ViewService.cs" />
+    <Compile Include="ViewModels\MainControlViewModel.cs" />
     <Compile Include="ViewModels\PLMapperSettingsWindowViewModel.cs" />
     <Compile Include="ViewModels\PLMapperViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
@@ -130,6 +131,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\SettingsControl.xaml.cs">
+      <DependentUpon>SettingsControl.xaml</DependentUpon>
     </Compile>
     <Page Include="Styles\Colors\Colors.xaml">
       <SubType>Designer</SubType>
@@ -160,6 +164,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\PLMapperSettingsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SettingsControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

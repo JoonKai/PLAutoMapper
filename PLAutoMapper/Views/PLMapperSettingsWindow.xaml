@@ -21,7 +21,7 @@
         </Grid.RowDefinitions>
         <layoutcontrol:TitleBar Grid.Row="0" Title="옵션" Background="{StaticResource ColorDarkGray}"/>
         <Grid Grid.Row="1" Background="{StaticResource ColorOrange}"/>
-        <views:SettingScreen Grid.Row="2"/>
+        
         <Grid Grid.Row="3" Background="{StaticResource ColorOrange}"/>
         <layoutcontrol:StatusBar Grid.Row="4" Background="{StaticResource ColorDarkGray}"/>
     </Grid>

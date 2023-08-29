@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace PLAutoMapper.Services
 {
@@ -19,6 +20,8 @@ namespace PLAutoMapper.Services
         {
             _serviceProvider = serviceProvider;
         }
+
+
         public void ShowPLMapper()
         {
             ShowView<PLMapper, PLMapperViewModel>();
@@ -32,6 +35,35 @@ namespace PLAutoMapper.Services
             }
         }
 
+        private bool ActivateView<TView>() where TView : Window
+        {
+            IEnumerable<TView> windows = Application.Current.Windows.OfType<TView>();
+
+            if(windows.Any())
+            {
+                windows.ElementAt(0).Activate();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        #region View + ViewModel
+        public void SetControl<TView, TViewModel>(object parameter = null)
+            where TView : UserControl
+            where TViewModel : INotifyPropertyChanged
+        {
+            var view = (UserControl)_serviceProvider.GetService(typeof(TView));
+            var viewModel = (INotifyPropertyChanged)_serviceProvider.GetService(typeof(TViewModel));
+
+            //매개변수 역할 확인
+            if (parameter != null && viewModel is IParameterReceiver parameterReceiver)
+            {
+                parameterReceiver.ReceiveParameter(parameter);
+            }
+            view.DataContext = viewModel;
+        }
         public void ShowView<TView, TViewModel>(object parameter = null)
             where TView : Window
             where TViewModel : INotifyPropertyChanged
@@ -49,19 +81,6 @@ namespace PLAutoMapper.Services
             view.DataContext = viewModel;
             view.Show();
         }
-        private bool ActivateView<TView>() where TView : Window
-        {
-            IEnumerable<TView> windows = Application.Current.Windows.OfType<TView>();
-
-            if(windows.Any())
-            {
-                windows.ElementAt(0).Activate();
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
+        #endregion
     }
 }
