@@ -13,7 +13,7 @@ namespace PLAutoMapper
     /// </summary>
     public partial class App : Application
     {
-        Mutex mutex;
+        //Mutex mutex;
         private readonly IServiceProvider _services = null;
         public App()
         {
@@ -26,11 +26,11 @@ namespace PLAutoMapper
             //Views
             services.AddSingleton<PLMapper>();
             services.AddTransient<PLMapperSettingsWindow>();
-            services.AddSingleton<MainControl>();
+            services.AddTransient<MainControl>();
             //ViewModels
             services.AddSingleton<PLMapperViewModel>();
             services.AddTransient<PLMapperSettingsWindowViewModel>();
-            services.AddSingleton<MainControlViewModel>();
+            services.AddTransient<MainControlViewModel>();
             //Services
             services.AddSingleton<IViewService, ViewService>();
 
@@ -41,19 +41,19 @@ namespace PLAutoMapper
         {
             base.OnStartup(e);
             var viewService = (IViewService)_services.GetService(typeof(IViewService));
-            viewService.ShowPLMapper();
             viewService.SetControl<MainControl, MainControlViewModel>();
+            viewService.ShowPLMapper();
 
 
-            string mutexName = "program";
-            bool createNew;
+            //string mutexName = "program";
+            //bool createNew;
 
-            mutex = new Mutex(true, mutexName, out createNew);
+            //mutex = new Mutex(true, mutexName, out createNew);
 
-            if (!createNew)
-            {
-                Shutdown();
-            }
+            //if (!createNew)
+            //{
+            //    Shutdown();
+            //}
         }
     }
 }

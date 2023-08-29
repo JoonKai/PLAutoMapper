@@ -1,5 +1,8 @@
-﻿using PLAutoMapper.Commands;
+﻿using EMxLib.conf;
+using Microsoft.Extensions.DependencyInjection;
+using PLAutoMapper.Commands;
 using PLAutoMapper.Services;
+using PLAutoMapper.Views;
 using System;
 using System.Windows.Input;
 
