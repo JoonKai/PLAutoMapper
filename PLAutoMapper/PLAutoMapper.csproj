@@ -109,7 +109,6 @@
     <Compile Include="Services\IParameterReceiver.cs" />
     <Compile Include="Services\IViewService.cs" />
     <Compile Include="Services\ViewService.cs" />
-    <Compile Include="ViewModels\MainControlViewModel.cs" />
     <Compile Include="ViewModels\PLMapperSettingsWindowViewModel.cs" />
     <Compile Include="ViewModels\PLMapperViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />

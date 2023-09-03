@@ -23,11 +23,6 @@ namespace PLAutoMapper.Services
         {
             ShowView<PLMapper, PLMapperViewModel>();
         }
-        public void SetMainControl()
-        {
-            SetControl<MainControl, MainControlViewModel>();
-        }
-
         public void ShowPLMapperSetting()
         {
             if (!ActivateView<PLMapperSettingsWindow>())

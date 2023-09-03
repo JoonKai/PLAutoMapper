@@ -26,11 +26,9 @@ namespace PLAutoMapper
             //Views
             services.AddSingleton<PLMapper>();
             services.AddTransient<PLMapperSettingsWindow>();
-            services.AddTransient<MainControl>();
             //ViewModels
             services.AddSingleton<PLMapperViewModel>();
             services.AddTransient<PLMapperSettingsWindowViewModel>();
-            services.AddTransient<MainControlViewModel>();
             //Services
             services.AddSingleton<IViewService, ViewService>();
 
@@ -42,7 +40,6 @@ namespace PLAutoMapper
             base.OnStartup(e);
             var viewService = (IViewService)_services.GetService(typeof(IViewService));
             viewService.ShowPLMapper();
-            viewService.SetMainControl();
 
             //string mutexName = "program";
             //bool createNew;

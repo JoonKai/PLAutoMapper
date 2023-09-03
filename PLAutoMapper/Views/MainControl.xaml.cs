@@ -1,5 +1,8 @@
-﻿using PLAutoMapper.Services;
+﻿using EMPL.susceptor;
+using PLAutoMapper.Services;
 using PLAutoMapper.ViewModels;
+using System.IO;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace PLAutoMapper.Views
@@ -13,7 +16,6 @@ namespace PLAutoMapper.Views
         public MainControl()
         {
             InitializeComponent();
-            this.DataContext = new MainControlViewModel();
         }
     }
 }

@@ -57,7 +57,7 @@
                     <ColumnDefinition Width="150"/>
                 </Grid.ColumnDefinitions>
                 <WindowsFormsHost Grid.Column="0" Margin="0 0 -20 0">
-                    <pl:SusceptorViewer x:Name="SusViewer" BackColor="White"/>
+                    <pl:SusceptorViewer x:Name="SusViewer" BackColor="White" />
                 </WindowsFormsHost>
                 <Grid Grid.Column="1">
                     <Grid.ColumnDefinitions>
