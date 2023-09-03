@@ -47,7 +47,9 @@
         <!--#region 맵뷰어-->
         <Border Grid.Column="0" Grid.Row="0">
             <Grid>
-
+                <ListView>
+                    <ListViewItem Content="3CH031A"/>
+                </ListView>
             </Grid>
         </Border>
         <Border Grid.Column="1" Grid.Row="0" Background="White">

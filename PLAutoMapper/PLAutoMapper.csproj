@@ -106,6 +106,7 @@
     <Compile Include="Converters\WindowStateMarginConverter.cs" />
     <Compile Include="Enums\DateNames.cs" />
     <Compile Include="Enums\LocalDrivers.cs" />
+    <Compile Include="Models\PL.cs" />
     <Compile Include="Services\IParameterReceiver.cs" />
     <Compile Include="Services\IViewService.cs" />
     <Compile Include="Services\ViewService.cs" />
@@ -212,7 +213,6 @@
     <Resource Include="flickr.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\" />
     <Folder Include="Styles\Themes\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
