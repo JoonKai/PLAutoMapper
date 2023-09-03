@@ -4,10 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PLAutoMapper" 
-        xmlns:views="clr-namespace:PLAutoMapper.Views" 
-        xmlns:layoutcontrol="clr-namespace:PLAutoMapper.Views.LayoutControl"
+        xmlns:views="clr-namespace:PLAutoMapper.Views" xmlns:layoutcontrol="clr-namespace:PLAutoMapper.Views.LayoutControl"
         mc:Ignorable="d"
-        Title="SettingWindow" Height="550" Width="700" WindowStyle="None" ResizeMode="NoResize">
+        Title="SettingWindow" Height="600" Width="1000" WindowStyle="None" ResizeMode="NoResize">
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="20" ResizeBorderThickness="2"/>
     </WindowChrome.WindowChrome>
@@ -21,7 +20,7 @@
         </Grid.RowDefinitions>
         <layoutcontrol:TitleBar Grid.Row="0" Title="옵션" Background="{StaticResource ColorDarkGray}"/>
         <Grid Grid.Row="1" Background="{StaticResource ColorOrange}"/>
-        
+        <views:SettingsControl Grid.Row="2"/>
         <Grid Grid.Row="3" Background="{StaticResource ColorOrange}"/>
         <layoutcontrol:StatusBar Grid.Row="4" Background="{StaticResource ColorDarkGray}"/>
     </Grid>
