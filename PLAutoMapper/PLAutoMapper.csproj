@@ -106,12 +106,14 @@
     <Compile Include="Converters\WindowStateMarginConverter.cs" />
     <Compile Include="Enums\DateNames.cs" />
     <Compile Include="Enums\LocalDrivers.cs" />
-    <Compile Include="Models\PL.cs" />
+    <Compile Include="Models\PLModel.cs" />
+    <Compile Include="Models\SettingsModel.cs" />
     <Compile Include="Services\IParameterReceiver.cs" />
     <Compile Include="Services\IViewService.cs" />
     <Compile Include="Services\ViewService.cs" />
     <Compile Include="ViewModels\PLMapperSettingsWindowViewModel.cs" />
     <Compile Include="ViewModels\PLMapperViewModel.cs" />
+    <Compile Include="ViewModels\SettingsControlViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Views\LayoutControl\StatusBar.xaml.cs">
       <DependentUpon>StatusBar.xaml</DependentUpon>

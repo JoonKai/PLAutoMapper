@@ -26,6 +26,10 @@
             </Style>
             <Style TargetType="{x:Type TextBox}">
                 <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="Foreground" Value="{StaticResource ColorWhite}"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="Height" Value="21"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
             </Style>
             <Style TargetType="{x:Type GroupBox}">
                 <Setter Property="BorderThickness" Value="0.3"/>
@@ -43,7 +47,7 @@
         </Grid.RowDefinitions>
         <Grid Grid.Column="0" Grid.Row="0">
             <StackPanel Orientation="Horizontal">
-                <Button Margin="0 2 2 2" Width="60" Height="22" Content="저장" Style="{StaticResource ButtonStyle1}"/>
+                <Button Command="{Binding SettingsSave}" Margin="0 2 2 2" Width="60" Height="22" Content="저장" Style="{StaticResource ButtonStyle1}"/>
                 <Button Margin="0 2 2 2" Width="60" Height="22" Content="취소" Style="{StaticResource ButtonStyle1}"/>
             </StackPanel>
         </Grid>
@@ -68,7 +72,7 @@
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="로우 경로(1)" />
                                     <TextBlock Grid.Column="1" VerticalAlignment="Center" Text=" : "/>
-                                    <TextBox Grid.Column="2"/>
+                                    <TextBox Text="{Binding Raw1,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Grid.Column="2"/>
                                 </Grid>
                                 <Grid Margin="2">
                                     <Grid.ColumnDefinitions>
@@ -78,7 +82,7 @@
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="로우 경로(2)" />
                                     <TextBlock Grid.Column="1" VerticalAlignment="Center" Text=" : "/>
-                                    <TextBox Grid.Column="2"/>
+                                    <TextBox Text="{Binding Raw2,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Grid.Column="2"/>
                                 </Grid>
                                 <Grid Margin="2">
                                     <Grid.ColumnDefinitions>
@@ -88,7 +92,7 @@
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="백업 경로"/>
                                     <TextBlock Grid.Column="1" VerticalAlignment="Center" Text=" : "/>
-                                    <ComboBox ItemsSource="{eb:EnumBindingSource ex:LocalDrivers}" Grid.Column="3" Width="150" HorizontalAlignment="Left"/>
+                                    <ComboBox Text="{Binding Backup,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" ItemsSource="{eb:EnumBindingSource ex:LocalDrivers}" Grid.Column="3" Width="150" HorizontalAlignment="Left"/>
                                 </Grid>
                             </StackPanel>
                         </GroupBox>
@@ -102,7 +106,7 @@
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="아이디"/>
                                     <TextBlock Grid.Column="1" VerticalAlignment="Center" Text=" : "/>
-                                    <TextBox Grid.Column="3" Width="150" HorizontalAlignment="Left"/>
+                                    <TextBox Text="{Binding ConnectionID,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Grid.Column="3" Width="150" HorizontalAlignment="Left"/>
                                 </Grid>
                                 <Grid  Margin="2">
                                     <Grid.ColumnDefinitions>
@@ -112,7 +116,7 @@
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="비밀번호"/>
                                     <TextBlock Grid.Column="1" VerticalAlignment="Center" Text=" : "/>
-                                    <TextBox Grid.Column="3" Width="150" HorizontalAlignment="Left"/>
+                                    <TextBox Text="{Binding ConnectionPassword,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Grid.Column="3" Width="150" HorizontalAlignment="Left"/>
                                 </Grid>
                             </StackPanel>
                         </GroupBox>
@@ -127,6 +131,16 @@
                                     <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="설비명"/>
                                     <TextBlock Grid.Column="1" VerticalAlignment="Center" Text=" : "/>
                                     <ComboBox Grid.Column="2" Margin="1" Width="150" HorizontalAlignment="Left"/>
+                                </Grid>
+                                <Grid Margin="2">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.6*"/>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="2*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="설비명"/>
+                                    <TextBlock Grid.Column="1" VerticalAlignment="Center" Text=" : "/>
+                                    <TextBox Grid.Column="2" Margin="1" Width="150" HorizontalAlignment="Left"/>
                                 </Grid>
                             </StackPanel>
                         </GroupBox>
@@ -150,7 +164,7 @@
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="축 글자크기"/>
                                     <TextBlock Grid.Column="1" VerticalAlignment="Center" Text=" : "/>
-                                    <con:EPINumericUpDown Grid.Column="2" Height="20" Width="150" HorizontalAlignment="Left"/>
+                                    <con:EPINumericUpDown Grid.Column="2" Height="22" Width="150" HorizontalAlignment="Left"/>
                                 </Grid>
                             </StackPanel>
                         </GroupBox>
@@ -183,25 +197,25 @@
                     </Grid.RowDefinitions>
                     <GroupBox Header="DB설정" Margin="5" Grid.Column="0" >
                         <StackPanel Margin="5" Orientation="Vertical">
-                            <StackPanel Height="25" Orientation="Horizontal">
+                            <StackPanel Margin="2" Height="21" Orientation="Horizontal">
                                 <TextBlock VerticalAlignment="Center" Text="DATABASE" Margin="2" Width="80"/>
                                 <TextBlock VerticalAlignment="Center" Text=":" Margin="2" Width="5"/>
-                                <TextBox Width="100" Margin="3"/>
+                                <TextBox Width="100"/>
                             </StackPanel>
-                            <StackPanel Height="25" Orientation="Horizontal">
+                            <StackPanel Height="21" Margin="2" Orientation="Horizontal">
                                 <TextBlock VerticalAlignment="Center" Text="PORT" Margin="2" Width="80"/>
                                 <TextBlock VerticalAlignment="Center" Text=":" Margin="2" Width="5"/>
-                                <TextBox Width="100" Margin="3"/>
+                                <TextBox Width="100"/>
                             </StackPanel>
-                            <StackPanel Height="25" Orientation="Horizontal">
+                            <StackPanel Height="21" Margin="2" Orientation="Horizontal">
                                 <TextBlock VerticalAlignment="Center" Text="ID" Margin="2" Width="80"/>
                                 <TextBlock VerticalAlignment="Center" Text=":" Margin="2" Width="5"/>
-                                <TextBox Width="100" Margin="3"/>
+                                <TextBox Width="100"/>
                             </StackPanel>
-                            <StackPanel Height="25" Orientation="Horizontal">
+                            <StackPanel Height="21" Margin="2" Orientation="Horizontal">
                                 <TextBlock VerticalAlignment="Center" Text="PASSWORD" Margin="2" Width="80"/>
                                 <TextBlock VerticalAlignment="Center" Text=":" Margin="2" Width="5"/>
-                                <TextBox Width="100" Margin="3"/>
+                                <TextBox Width="100"/>
                             </StackPanel>
                         </StackPanel>
                     </GroupBox>

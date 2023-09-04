@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PLAutoMapper.Models
 {
-    public class PL
+    public class PLModel
     {
         public int Id { get; set; }
         public string PLName { get; set; }
