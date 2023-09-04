@@ -48,5 +48,20 @@ namespace PLAutoMapperControl.Controls.BaseControls
                 NumValue--;
             }
         }
+
+        private void txtNum_MouseWheel(object sender, System.Windows.Input.MouseWheelEventArgs e)
+        {
+            if (e.Delta > 0)
+            {
+                NumValue++;
+            }
+            else if (e.Delta < 0)
+            {
+                if (NumValue > 0)
+                {
+                    NumValue--;
+                }
+            }
+        }
     }
 }

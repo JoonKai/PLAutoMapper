@@ -66,6 +66,7 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commans\ComboBoxBackgroundManager.cs" />
     <Compile Include="Controls\BaseControls\EPIAddItemsListControl.xaml.cs">
       <DependentUpon>EPIAddItemsListControl.xaml</DependentUpon>
     </Compile>
@@ -75,6 +76,7 @@
     <Compile Include="Controls\PageControls\EPIFolderMakerPage.xaml.cs">
       <DependentUpon>EPIFolderMakerPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Extensions\ComboBoxBackgroundExtension.cs" />
     <Compile Include="Model\EPI\MOCVD.cs" />
     <Compile Include="Model\EPI\NetworkDriver.cs" />
     <Compile Include="Model\EPI\PL.cs" />

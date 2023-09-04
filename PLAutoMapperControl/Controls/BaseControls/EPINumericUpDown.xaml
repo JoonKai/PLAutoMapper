@@ -6,27 +6,77 @@
              xmlns:local="clr-namespace:PLAutoMapperControl.Controls.BaseControls"
              mc:Ignorable="d" >
     <UserControl.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="../../Styles/Themes/EPINumericUpDownTheme.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
+        <!--#region ButtonUP-->
+        <Style x:Key="TextContent" TargetType="{x:Type TextBox}">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="DarkGray"/>
+            <Setter Property="BorderThickness" Value="1"/>
+        </Style>
+        <!--#region ButtonUP-->
+        <Style x:Key="ButtonUP" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="Part_Border" BorderBrush="DarkGreen" BorderThickness="1" Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" TextElement.Foreground="{TemplateBinding Foreground}" ContentSource="Content"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Part_Border" Property="BorderBrush" Value="Black"/>
+                                <Setter TargetName="Part_Border" Property="Background" Value="#FF216640"/>
+                                <Setter Property="Foreground" Value="White"/>
+                            </Trigger>
+                            <Trigger Property="Button.IsPressed" Value="True">
+                                <Setter TargetName="Part_Border" Property="BorderBrush" Value="Orange"/>
+                                <Setter Property="Foreground" Value="White"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <!--#region ButtonDown-->
+        <Style x:Key="ButtonDOWN" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="Part_Border" BorderBrush="Red" BorderThickness="1" Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" TextElement.Foreground="{TemplateBinding Foreground}" ContentSource="Content"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Part_Border" Property="BorderBrush" Value="Black"/>
+                                <Setter TargetName="Part_Border" Property="Background" Value="Red"/>
+                                <Setter Property="Foreground" Value="White"/>
+                            </Trigger>
+                            <Trigger Property="Button.IsPressed" Value="True">
+                                <Setter TargetName="Part_Border" Property="BorderBrush" Value="Orange"/>
+                                <Setter Property="Foreground" Value="White"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <!--#endregion-->
     </UserControl.Resources>
-    <Grid MinHeight="20" MinWidth="100">
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="5*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        <TextBox x:Name="txtNum" TextChanged="txtNum_TextChanged" Grid.Column="0" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="{StaticResource ColorOrange}" BorderThickness="0.5" FontSize="11"/>
+        <TextBox x:Name="txtNum" TextChanged="txtNum_TextChanged" MouseWheel="txtNum_MouseWheel" Grid.Column="0" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Style="{StaticResource TextContent}"/>
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
-            <Button Height="10" x:Name="cmdUp" Click="cmdUp_Click" Grid.Row="0" Margin="-1 -0.5 0 -0.5" Style="{StaticResource ButtonStyle1}">
+            <Button Height="12" x:Name="cmdUp" Click="cmdUp_Click" Grid.Row="0" Margin="-1 -0.5 0 0"  Style="{StaticResource ButtonUP}">
                 <Image Height="7" Width="7" VerticalAlignment="Center" Source="../../Img/TriangleUp.png"/>
             </Button>
-            <Button Height="10" x:Name="cmdDown" Click="cmdDown_Click" Grid.Row="1" Margin="-1 -0.5 0 -0.5" Style="{StaticResource ButtonStyle2}">
+            <Button Height="12" x:Name="cmdDown" Click="cmdDown_Click" Grid.Row="1" Margin="-1 0 0 -0.5" Style="{StaticResource ButtonDOWN}">
                 <Image Height="7" Width="7" VerticalAlignment="Center" Source="../../Img/TriangleDown.png"/>
             </Button>
         </Grid>

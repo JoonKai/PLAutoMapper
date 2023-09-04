@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:ex="clr-namespace:PLAutoMapper.Enums"
+             xmlns:back="clr-namespace:PLAutoMapperControl.Commans;assembly=PLAutoMapperControl"
              xmlns:eb="clr-namespace:PLAutoMapperLib.Extensions;assembly=PLAutoMapperLib"
              xmlns:con="clr-namespace:PLAutoMapperControl.Controls.BaseControls;assembly=PLAutoMapperControl"
              xmlns:pag="clr-namespace:PLAutoMapperControl.Controls.PageControls;assembly=PLAutoMapperControl"
@@ -92,7 +93,14 @@
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="백업 경로"/>
                                     <TextBlock Grid.Column="1" VerticalAlignment="Center" Text=" : "/>
-                                    <ComboBox Text="{Binding Backup,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" ItemsSource="{eb:EnumBindingSource ex:LocalDrivers}" Grid.Column="3" Width="150" HorizontalAlignment="Left"/>
+                                    <ComboBox 
+                                        Text="{Binding Backup,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+                                        ItemsSource="{eb:EnumBindingSource ex:LocalDrivers}" 
+                                        Grid.Column="3" 
+                                        Width="150" 
+                                        HorizontalAlignment="Left"
+                                        back:ComboBoxBackgroundManager.Background="{StaticResource ColorPrimary}"
+                                        />
                                 </Grid>
                             </StackPanel>
                         </GroupBox>
@@ -130,7 +138,7 @@
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="설비명"/>
                                     <TextBlock Grid.Column="1" VerticalAlignment="Center" Text=" : "/>
-                                    <ComboBox Grid.Column="2" Margin="1" Width="150" HorizontalAlignment="Left"/>
+                                    <ComboBox back:ComboBoxBackgroundManager.Background="{StaticResource ColorPrimary}" Grid.Column="2" Margin="1" Width="150" HorizontalAlignment="Left"/>
                                 </Grid>
                                 <Grid Margin="2">
                                     <Grid.ColumnDefinitions>
@@ -154,7 +162,7 @@
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="복사 옵션"/>
                                     <TextBlock Grid.Column="1" VerticalAlignment="Center" Text=" : "/>
-                                    <ComboBox ItemsSource="{eb:EnumBindingSource ex:DateNames}" Grid.Column="3" Width="150" HorizontalAlignment="Left"/>
+                                    <ComboBox back:ComboBoxBackgroundManager.Background="{StaticResource ColorPrimary}" ItemsSource="{eb:EnumBindingSource ex:DateNames}" Grid.Column="3" Width="150" HorizontalAlignment="Left"/>
                                 </Grid>
                                 <Grid  Margin="2">
                                     <Grid.ColumnDefinitions>
