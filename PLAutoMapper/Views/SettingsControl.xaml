@@ -31,6 +31,9 @@
                 <Setter Property="BorderThickness" Value="0.3"/>
                 <Setter Property="BorderBrush" Value="{StaticResource ColorOrange}"/>
             </Style>
+            <Style TargetType="{x:Type ComboBox}">
+                <Setter Property="Foreground" Value="Black"/>
+            </Style>
         </ResourceDictionary>
     </UserControl.Resources>
     <Grid Background="{StaticResource ColorDarkGray}">
@@ -50,71 +53,42 @@
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="2*"/>
-                        <ColumnDefinition Width="1.3*"/>
-                        <ColumnDefinition Width="1.5*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
                     <!--#region SettingTab 일반-1-->
                     <StackPanel Margin="4" Grid.Column="0" Orientation="Vertical">
-                        <GroupBox Header="네트워크 경로">
+                        <GroupBox Header="네트워크 주소 경로">
                             <StackPanel>
-                                <Grid  Margin="2">
+                                <Grid Margin="2">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="0.8*"/>
+                                        <ColumnDefinition Width="0.3*"/>
                                         <ColumnDefinition Width="auto"/>
-                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="1*"/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="로우 경로(1) :" />
+                                    <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="로우 경로(1)" />
                                     <TextBlock Grid.Column="1" VerticalAlignment="Center" Text=" : "/>
-                                    <ComboBox x:Name="cbRaw1" Grid.Column="2" VerticalAlignment="Center" ItemsSource="{Binding NetworkDriverList}">
-                                        <ComboBox.ItemTemplate>
-                                            <DataTemplate>
-                                                <TextBlock Text="{Binding NetDriver}"/>
-                                            </DataTemplate>
-                                        </ComboBox.ItemTemplate>
-                                    </ComboBox>
-                                </Grid>
-                                <Grid  Margin="2">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="0.8*"/>
-                                        <ColumnDefinition Width="auto"/>
-                                        <ColumnDefinition Width="2*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="로우 경로(2) :"/>
-                                    <TextBlock Grid.Column="1" VerticalAlignment="Center" Text=" : "/>
-                                    <ComboBox x:Name="cbRaw2" Grid.Column="3" VerticalAlignment="Center"/>
+                                    <TextBox Grid.Column="2"/>
                                 </Grid>
                                 <Grid Margin="2">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="0.8*"/>
+                                        <ColumnDefinition Width="0.3*"/>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="로우 경로(2)" />
+                                    <TextBlock Grid.Column="1" VerticalAlignment="Center" Text=" : "/>
+                                    <TextBox Grid.Column="2"/>
+                                </Grid>
+                                <Grid Margin="2">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.6*"/>
                                         <ColumnDefinition Width="auto"/>
                                         <ColumnDefinition Width="2*"/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="와칭 경로" />
+                                    <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="백업 경로"/>
                                     <TextBlock Grid.Column="1" VerticalAlignment="Center" Text=" : "/>
-                                    <ComboBox x:Name="cbWatching" Grid.Column="2" VerticalAlignment="Center"/>
-                                </Grid>
-                                <Grid Height="120" Margin="0 5 0 0">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="1*"/>
-                                        <RowDefinition Height="4*"/>
-                                        <RowDefinition Height="1*"/>
-                                    </Grid.RowDefinitions>
-                                    <TextBox x:Name="txbNetworkPath" Margin="1" Grid.Row="0" BorderBrush="DarkMagenta" BorderThickness="1"/>
-                                    <Grid Margin="0 0 0 0"  Grid.Row="2">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="1*"/>
-                                            <ColumnDefinition Width="1*"/>
-                                        </Grid.ColumnDefinitions>
-                                        <Button x:Name="AddNetworkPath" Grid.Column="0" Content="추가" Style="{StaticResource ButtonStyle1}"/>
-                                        <Button x:Name="DeleteNetworkPath" Grid.Column="1" Content="제거" Style="{StaticResource ButtonStyle1}"/>
-                                    </Grid>
-                                    <ListBox x:Name="ViewNetWorkPath" Margin="1" Grid.Row="1" BorderBrush="Black" ScrollViewer.VerticalScrollBarVisibility="Hidden" BorderThickness="1" ItemsSource="{Binding NetworkDriverList}">
-                                        <ListBox.ItemTemplate>
-                                            <DataTemplate>
-                                                <TextBlock Margin="0.5" FontSize="11" Text="{Binding NetDriver}" Foreground="Blue"/>
-                                            </DataTemplate>
-                                        </ListBox.ItemTemplate>
-                                    </ListBox>
+                                    <ComboBox ItemsSource="{eb:EnumBindingSource ex:LocalDrivers}" Grid.Column="3" Width="150" HorizontalAlignment="Left"/>
                                 </Grid>
                             </StackPanel>
                         </GroupBox>
@@ -122,102 +96,68 @@
                             <StackPanel>
                                 <Grid  Margin="2">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="0.8*"/>
+                                        <ColumnDefinition Width="0.6*"/>
                                         <ColumnDefinition Width="auto"/>
                                         <ColumnDefinition Width="2*"/>
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="아이디"/>
                                     <TextBlock Grid.Column="1" VerticalAlignment="Center" Text=" : "/>
-                                    <TextBox Grid.Column="3" Width="100" HorizontalAlignment="Left"/>
+                                    <TextBox Grid.Column="3" Width="150" HorizontalAlignment="Left"/>
                                 </Grid>
                                 <Grid  Margin="2">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="0.8*"/>
+                                        <ColumnDefinition Width="0.6*"/>
                                         <ColumnDefinition Width="auto"/>
                                         <ColumnDefinition Width="2*"/>
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="비밀번호"/>
                                     <TextBlock Grid.Column="1" VerticalAlignment="Center" Text=" : "/>
-                                    <TextBox Grid.Column="3" Width="100" HorizontalAlignment="Left"/>
+                                    <TextBox Grid.Column="3" Width="150" HorizontalAlignment="Left"/>
                                 </Grid>
-
+                            </StackPanel>
+                        </GroupBox>
+                        <GroupBox Header="설비">
+                            <StackPanel>
+                                <Grid Margin="2">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.6*"/>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="2*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="설비명"/>
+                                    <TextBlock Grid.Column="1" VerticalAlignment="Center" Text=" : "/>
+                                    <ComboBox Grid.Column="2" Margin="1" Width="150" HorizontalAlignment="Left"/>
+                                </Grid>
                             </StackPanel>
                         </GroupBox>
                         <GroupBox Header="로컬 경로">
                             <StackPanel>
                                 <Grid  Margin="2">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="0.8*"/>
-                                        <ColumnDefinition Width="auto"/>
-                                        <ColumnDefinition Width="2*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="백업 경로"/>
-                                    <TextBlock Grid.Column="1" VerticalAlignment="Center" Text=" : "/>
-                                    <ComboBox ItemsSource="{eb:EnumBindingSource ex:LocalDrivers}" Grid.Column="3" Width="100" HorizontalAlignment="Left"/>
-
-                                </Grid>
-                                <Grid  Margin="2">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="0.8*"/>
+                                        <ColumnDefinition Width="0.6*"/>
                                         <ColumnDefinition Width="auto"/>
                                         <ColumnDefinition Width="2*"/>
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="복사 옵션"/>
                                     <TextBlock Grid.Column="1" VerticalAlignment="Center" Text=" : "/>
-                                    <ComboBox ItemsSource="{eb:EnumBindingSource ex:DateNames}" Grid.Column="3" Width="100" HorizontalAlignment="Left"/>
+                                    <ComboBox ItemsSource="{eb:EnumBindingSource ex:DateNames}" Grid.Column="3" Width="150" HorizontalAlignment="Left"/>
                                 </Grid>
                                 <Grid  Margin="2">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="0.8*"/>
+                                        <ColumnDefinition Width="0.6*"/>
                                         <ColumnDefinition Width="auto"/>
                                         <ColumnDefinition Width="2*"/>
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="축 글자크기"/>
                                     <TextBlock Grid.Column="1" VerticalAlignment="Center" Text=" : "/>
-                                    <con:EPINumericUpDown Grid.Column="2" Height="20" Width="100" HorizontalAlignment="Left"/>
+                                    <con:EPINumericUpDown Grid.Column="2" Height="20" Width="150" HorizontalAlignment="Left"/>
                                 </Grid>
                             </StackPanel>
                         </GroupBox>
-                    </StackPanel>
-                    <!--#endregion-->
-                    <!--#region SettingTab 일반 Col2-->
-                    <StackPanel Margin="4" Grid.Column="1" Orientation="Vertical">
-                        <GroupBox Header="설비">
-                            <StackPanel>
-                                <Grid  Margin="2">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1.5*"/>
-                                        <ColumnDefinition Width="1.8*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="설비명       :" />
-                                    <TextBlock Grid.Column="1" VerticalAlignment="Center" Text=" : "/>
-                                    <ComboBox Grid.Column="2" Margin="1" VerticalAlignment="Center" >
-                                        <ComboBoxItem Content="\\192.168.205.83\EPI001"/>
-                                    </ComboBox>
-                                </Grid>
-                                <Grid Margin="0 5 0 0" Height="150">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1.5*"/>
-                                        <ColumnDefinition Width="1.8*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="1*"/>
-                                        <RowDefinition Height="1*"/>
-                                    </Grid.RowDefinitions>
-                                    <StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="0">
-                                        <TextBox Margin="1" BorderBrush="Black" BorderThickness="1"/>
-                                        <Button Content="추가" Style="{StaticResource ButtonStyle1}"/>
-                                        <Button Content="제거" Style="{StaticResource ButtonStyle1}"/>
-                                    </StackPanel>
-                                    <ListBox Margin="2 1 2 1" Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" BorderBrush="Black" BorderThickness="1"/>
-                                </Grid>
-                            </StackPanel>
-                        </GroupBox>
-
                     </StackPanel>
                     <!--#endregion-->
                     <!--#region SettingTab 일반-3-->
-                    <GroupBox Header="기타옵션" Grid.Column="2" Margin="4">
+                    <GroupBox Header="기타옵션" Grid.Column="1" Margin="4">
                         <StackPanel Margin="4" Orientation="Vertical">
                             <CheckBox Content="자동 삭제 켜기/끄기" Height="25" VerticalContentAlignment="Center" />
                             <CheckBox Content="휴지통보내기 켜기/끄기" Height="25" VerticalContentAlignment="Center" />
