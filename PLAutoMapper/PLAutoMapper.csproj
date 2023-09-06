@@ -106,6 +106,7 @@
     <Compile Include="Converters\WindowStateMarginConverter.cs" />
     <Compile Include="Enums\DateNames.cs" />
     <Compile Include="Enums\LocalDrivers.cs" />
+    <Compile Include="Enums\PLSerialNames.cs" />
     <Compile Include="Models\PLModel.cs" />
     <Compile Include="Models\SettingsModel.cs" />
     <Compile Include="Services\IParameterReceiver.cs" />
@@ -145,7 +146,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Styles\Controls\EPINumericUpDownTheme.xaml">
+    <Page Include="Styles\Controls\EPIComboboxStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

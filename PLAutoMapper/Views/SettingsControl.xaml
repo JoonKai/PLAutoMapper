@@ -15,6 +15,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="../Styles/Controls/ControlThemes.xaml"/>
+                <ResourceDictionary Source="../Styles/Controls/EPIComboboxStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <Style TargetType="{x:Type TabControl}">
                 <Setter Property="Background" Value="Transparent"/>
@@ -57,12 +58,13 @@
             <TabItem Header="일반" Margin="-3 0 0 0">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="2*"/>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="108*"/>
+                        <ColumnDefinition Width="389*"/>
+                        <ColumnDefinition Width="249*"/>
+                        <ColumnDefinition Width="249*"/>
                     </Grid.ColumnDefinitions>
                     <!--#region SettingTab 일반-1-->
-                    <StackPanel Margin="4" Grid.Column="0" Orientation="Vertical">
+                    <StackPanel Margin="4,4,4,4" Grid.Column="0" Orientation="Vertical" Grid.ColumnSpan="2">
                         <GroupBox Header="네트워크 주소 경로">
                             <StackPanel>
                                 <Grid Margin="2">
@@ -93,14 +95,7 @@
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="백업 경로"/>
                                     <TextBlock Grid.Column="1" VerticalAlignment="Center" Text=" : "/>
-                                    <ComboBox 
-                                        Text="{Binding Backup,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
-                                        ItemsSource="{eb:EnumBindingSource ex:LocalDrivers}" 
-                                        Grid.Column="3" 
-                                        Width="150" 
-                                        HorizontalAlignment="Left"
-                                        back:ComboBoxBackgroundManager.Background="{StaticResource ColorPrimary}"
-                                        />
+                                    <ComboBox HorizontalAlignment="Left" Width="150" ItemContainerStyle="{StaticResource ComboItemStyle}" back:ComboBoxBackgroundManager.Background="{StaticResource ColorPrimary}" Text="{Binding Backup,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" ItemsSource="{eb:EnumBindingSource ex:LocalDrivers}" Grid.Column="3"/>
                                 </Grid>
                             </StackPanel>
                         </GroupBox>
@@ -138,7 +133,7 @@
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="설비명"/>
                                     <TextBlock Grid.Column="1" VerticalAlignment="Center" Text=" : "/>
-                                    <ComboBox back:ComboBoxBackgroundManager.Background="{StaticResource ColorPrimary}" Grid.Column="2" Margin="1" Width="150" HorizontalAlignment="Left"/>
+                                    <ComboBox Text="{Binding PLID,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" ItemsSource="{eb:EnumBindingSource ex:PLSerialNames}" ItemContainerStyle="{StaticResource ComboItemStyle}" back:ComboBoxBackgroundManager.Background="{StaticResource ColorPrimary}" Grid.Column="2" Margin="1" Width="150" HorizontalAlignment="Left"/>
                                 </Grid>
                                 <Grid Margin="2">
                                     <Grid.ColumnDefinitions>
@@ -162,7 +157,7 @@
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="복사 옵션"/>
                                     <TextBlock Grid.Column="1" VerticalAlignment="Center" Text=" : "/>
-                                    <ComboBox back:ComboBoxBackgroundManager.Background="{StaticResource ColorPrimary}" ItemsSource="{eb:EnumBindingSource ex:DateNames}" Grid.Column="3" Width="150" HorizontalAlignment="Left"/>
+                                    <ComboBox Text="{Binding CopyOption,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" ItemContainerStyle="{StaticResource ComboItemStyle}" back:ComboBoxBackgroundManager.Background="{StaticResource ColorPrimary}" ItemsSource="{eb:EnumBindingSource ex:DateNames}" Grid.Column="3" Width="150" HorizontalAlignment="Left"/>
                                 </Grid>
                                 <Grid  Margin="2">
                                     <Grid.ColumnDefinitions>
@@ -172,14 +167,14 @@
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="축 글자크기"/>
                                     <TextBlock Grid.Column="1" VerticalAlignment="Center" Text=" : "/>
-                                    <con:EPINumericUpDown Grid.Column="2" Height="22" Width="150" HorizontalAlignment="Left"/>
+                                    <con:EPINumericUpDown TextValue="{Binding AxisFontSize,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" FontColor="White" Grid.Column="2" Height="22" Width="150" HorizontalAlignment="Left"/>
                                 </Grid>
                             </StackPanel>
                         </GroupBox>
                     </StackPanel>
                     <!--#endregion-->
                     <!--#region SettingTab 일반-3-->
-                    <GroupBox Header="기타옵션" Grid.Column="1" Margin="4">
+                    <GroupBox Header="기타옵션" Grid.Column="2" Margin="4,4,4,4">
                         <StackPanel Margin="4" Orientation="Vertical">
                             <CheckBox Content="자동 삭제 켜기/끄기" Height="25" VerticalContentAlignment="Center" />
                             <CheckBox Content="휴지통보내기 켜기/끄기" Height="25" VerticalContentAlignment="Center" />
@@ -208,22 +203,22 @@
                             <StackPanel Margin="2" Height="21" Orientation="Horizontal">
                                 <TextBlock VerticalAlignment="Center" Text="DATABASE" Margin="2" Width="80"/>
                                 <TextBlock VerticalAlignment="Center" Text=":" Margin="2" Width="5"/>
-                                <TextBox Width="100"/>
+                                <TextBox Text="{Binding DatabaseName,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Width="100"/>
                             </StackPanel>
                             <StackPanel Height="21" Margin="2" Orientation="Horizontal">
                                 <TextBlock VerticalAlignment="Center" Text="PORT" Margin="2" Width="80"/>
                                 <TextBlock VerticalAlignment="Center" Text=":" Margin="2" Width="5"/>
-                                <TextBox Width="100"/>
+                                <TextBox Text="{Binding DatabasePort,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Width="100"/>
                             </StackPanel>
                             <StackPanel Height="21" Margin="2" Orientation="Horizontal">
                                 <TextBlock VerticalAlignment="Center" Text="ID" Margin="2" Width="80"/>
                                 <TextBlock VerticalAlignment="Center" Text=":" Margin="2" Width="5"/>
-                                <TextBox Width="100"/>
+                                <TextBox Text="{Binding DatabaseID,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Width="100"/>
                             </StackPanel>
                             <StackPanel Height="21" Margin="2" Orientation="Horizontal">
                                 <TextBlock VerticalAlignment="Center" Text="PASSWORD" Margin="2" Width="80"/>
                                 <TextBlock VerticalAlignment="Center" Text=":" Margin="2" Width="5"/>
-                                <TextBox Width="100"/>
+                                <TextBox Text="{Binding DatabasePassword,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Width="100"/>
                             </StackPanel>
                         </StackPanel>
                     </GroupBox>

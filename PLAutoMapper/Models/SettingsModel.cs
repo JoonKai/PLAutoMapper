@@ -13,5 +13,12 @@ namespace PLAutoMapper.Models
         public string Backup { get; set; }
         public string UserId { get; set; }
         public string UserPassword { get; set; }
+        public string PLID { get; set; }
+        public string CopyOption { get; set; }
+        public string AxisFontSize { get; set; }
+        public string DatabaseName { get; set; }
+        public string DatabasePort { get; set; }
+        public string DatabaseID { get; set; }
+        public string DatabasePassword { get; set; }
     }
 }

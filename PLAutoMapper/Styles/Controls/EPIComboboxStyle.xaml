@@ -1,0 +1,7 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style x:Key="ComboItemStyle" TargetType="{x:Type ComboBoxItem}">
+        <Setter Property="Background" Value="{StaticResource ColorPrimary}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource ColorPrimary}"/>
+    </Style>
+</ResourceDictionary>

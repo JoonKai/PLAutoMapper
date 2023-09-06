@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace PLAutoMapperControl.Controls.BaseControls
 {
@@ -8,6 +9,32 @@ namespace PLAutoMapperControl.Controls.BaseControls
     /// </summary>
     public partial class EPINumericUpDown : UserControl
     {
+
+
+        public Brush FontColor
+        {
+            get { return (Brush)GetValue(FontColorProperty); }
+            set { SetValue(FontColorProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for FontColor.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty FontColorProperty =
+            DependencyProperty.Register("FontColor", typeof(Brush), typeof(EPINumericUpDown), new UIPropertyMetadata(Brushes.Black));
+
+
+
+        public string TextValue
+        {
+            get { return (string)GetValue(TextValueProperty); }
+            set { SetValue(TextValueProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for TextValue.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty TextValueProperty =
+            DependencyProperty.Register("TextValue", typeof(string), typeof(EPINumericUpDown), new FrameworkPropertyMetadata("",FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
+
+
+
         private int numValue =0;
 
         public int NumValue

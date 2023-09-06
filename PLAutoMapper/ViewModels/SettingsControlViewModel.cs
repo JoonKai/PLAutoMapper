@@ -55,6 +55,69 @@ namespace PLAutoMapper.ViewModels
                 OnPropertyChanged("ConnectionPassword");
             }
         }
+        public string PLID
+        {
+            get => settings.PLID;
+            set
+            {
+                settings.PLID = value;
+                OnPropertyChanged("PLID");
+            }
+        }
+        public string CopyOption
+        {
+            get => settings.CopyOption;
+            set
+            {
+                settings.CopyOption = value;
+                OnPropertyChanged("CopyOption");
+            }
+        }
+        public string AxisFontSize
+        {
+            get => settings.AxisFontSize;
+            set
+            {
+                settings.AxisFontSize = value;
+                OnPropertyChanged("AxisFontSize");
+            }
+        }
+        public string DatabaseName
+        {
+            get => settings.DatabaseName;
+            set
+            {
+                settings.DatabaseName = value;
+                OnPropertyChanged("DatabaseName");
+            }
+        }
+        public string DatabasePort
+        {
+            get => settings.DatabasePort;
+            set
+            {
+                settings.DatabasePort = value;
+                OnPropertyChanged("DatabasePort");
+            }
+        }
+        public string DatabaseID
+        {
+            get => settings.DatabaseID;
+            set
+            {
+                settings.DatabaseID = value;
+                OnPropertyChanged("DatabaseID");
+            }
+        }
+        public string DatabasePassword
+        {
+            get => settings.DatabasePassword;
+            set
+            {
+                settings.DatabasePassword = value;
+                OnPropertyChanged("DatabasePassword");
+            }
+        }
         #endregion
         public SettingsControlViewModel() 
         {
@@ -65,6 +128,13 @@ namespace PLAutoMapper.ViewModels
             Backup = Helper.PIni.Read("NetworkDriverPath", "Backup");
             ConnectionID = Helper.PIni.Read("Connection", "ConnectionID");
             ConnectionPassword = Helper.PIni.Read("Connection", "ConnectionPassword");
+            PLID = Helper.PIni.Read("Equipment", "PLID");
+            CopyOption = Helper.PIni.Read("Etc", "CopyOption");
+            AxisFontSize = Helper.PIni.Read("Etc", "AxisFontSize");
+            DatabaseName = Helper.PIni.Read("DB", "DatabaseName");
+            DatabasePort = Helper.PIni.Read("DB", "DatabasePort");
+            DatabaseID = Helper.PIni.Read("DB", "DatabaseID");
+            DatabasePassword = Helper.PIni.Read("DB", "DatabasePassword");
         }
         public ICommand SettingsSave => new RelayCommand<object>(SaveSettings);
 
@@ -75,10 +145,13 @@ namespace PLAutoMapper.ViewModels
             Helper.PIni.Write("NetworkDriverPath", "Backup", Backup);
             Helper.PIni.Write("Connection", "ConnectionID", ConnectionID);
             Helper.PIni.Write("Connection", "ConnectionPassword", ConnectionPassword);
-            //Helper.PIni.Write("NetworkDriverPath","Raw1",Raw1)
-            //Helper.PIni.Write("NetworkDriverPath","Raw1",Raw1)
-            //Helper.PIni.Write("NetworkDriverPath","Raw1",Raw1)
-            //Helper.PIni.Write("NetworkDriverPath","Raw1",Raw1)
+            Helper.PIni.Write("Equipment", "PLID", PLID);
+            Helper.PIni.Write("Etc", "CopyOption", CopyOption);
+            Helper.PIni.Write("Etc", "AxisFontSize", AxisFontSize);
+            Helper.PIni.Write("DB", "DatabaseName", DatabaseName);
+            Helper.PIni.Write("DB", "DatabasePort", DatabasePort);
+            Helper.PIni.Write("DB", "DatabaseID", DatabaseID);
+            Helper.PIni.Write("DB", "DatabasePassword", DatabasePassword);
 
         }
     }

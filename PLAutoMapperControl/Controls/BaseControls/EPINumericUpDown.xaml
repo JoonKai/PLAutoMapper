@@ -4,13 +4,15 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PLAutoMapperControl.Controls.BaseControls"
-             mc:Ignorable="d" >
+             mc:Ignorable="d" x:Name="root" >
     <UserControl.Resources>
         <!--#region ButtonUP-->
         <Style x:Key="TextContent" TargetType="{x:Type TextBox}">
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="BorderBrush" Value="DarkGray"/>
             <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Foreground" Value="{Binding FontColor, ElementName=root}"/>
+            <Setter Property="Text" Value="{Binding TextValue, ElementName=root}"/>
         </Style>
         <!--#region ButtonUP-->
         <Style x:Key="ButtonUP" TargetType="{x:Type Button}">
