@@ -15,6 +15,10 @@ namespace PLAutoMapper.Models
         public string UserPassword { get; set; }
         public string PLID { get; set; }
         public string CopyOption { get; set; }
+        public bool AutoDelete { get; set; }
+        public bool SendRecycleBin { get; set; }
+        public bool ETC1 { get; set; }
+        public bool ETC2 { get; set; }
         public int AxisFontSize { get; set; }
         public string DatabaseName { get; set; }
         public string DatabasePort { get; set; }

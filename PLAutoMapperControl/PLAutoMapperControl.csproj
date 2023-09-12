@@ -70,6 +70,9 @@
     <Compile Include="Controls\BaseControls\EPIAddItemsListControl.xaml.cs">
       <DependentUpon>EPIAddItemsListControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\BaseControls\EPIJsonListControl.xaml.cs">
+      <DependentUpon>EPIJsonListControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\PageControls\EPIFolderMakerPage.xaml.cs">
       <DependentUpon>EPIFolderMakerPage.xaml</DependentUpon>
     </Compile>
@@ -105,6 +108,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Controls\BaseControls\EPIAddItemsListControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\BaseControls\EPIJsonListControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

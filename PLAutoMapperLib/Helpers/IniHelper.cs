@@ -27,7 +27,6 @@ namespace PLAutoMapperLib.Helpers
         {
             /** 저장변수 */
             string val = Read(section, key);
-
             /** 읽은값이 Null 이면 init_val 값으로 변경 */
             if (val == null || val == "")
             {
@@ -44,6 +43,24 @@ namespace PLAutoMapperLib.Helpers
             try
             {
                 WritePrivateProfileString(section, key, val, savePath);
+                strError = null;
+
+                return strError;
+            }
+            catch (Exception exError)
+            {
+                strError = string.Format("[SYSTEM] : {0}", exError.Message);
+
+                return strError;
+            }
+        }
+        public string Write(string section, string key, bool boolean)
+        {
+            string strError;
+
+            try
+            {
+                WritePrivateProfileString(section, key, boolean.ToString().ToUpper().Trim(), savePath);
                 strError = null;
 
                 return strError;

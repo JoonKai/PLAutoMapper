@@ -83,6 +83,24 @@ namespace PLAutoMapper.ViewModels
                 OnPropertyChanged("AxisFontSize");
             }
         }
+        public bool AutoDelete
+        {
+            get => settings.AutoDelete;
+            set
+            {
+                settings.AutoDelete = value;
+                OnPropertyChanged("AutoDelete");
+            }
+        }
+        public bool SendRecycleBin
+        {
+            get => settings.SendRecycleBin;
+            set
+            {
+                settings.SendRecycleBin = value;
+                OnPropertyChanged("SendRecycleBin");
+            }
+        }
         public string DatabaseName
         {
             get => settings.DatabaseName;
@@ -132,6 +150,8 @@ namespace PLAutoMapper.ViewModels
             PLID = Helper.PIni.Read("Equipment", "PLID");
             CopyOption = Helper.PIni.Read("Etc", "CopyOption");
             AxisFontSize = (Helper.PIni.Read("Etc", "AxisFontSize"))==""?0: Convert.ToInt32(Helper.PIni.Read("Etc", "AxisFontSize"));
+            AutoDelete = (Helper.PIni.Read("Etc", "AutoDelete")) == "TRUE" ? true : false;
+            SendRecycleBin = (Helper.PIni.Read("Etc", "SendRecycleBin")) == "TRUE" ? true : false;
             DatabaseName = Helper.PIni.Read("DB", "DatabaseName");
             DatabasePort = Helper.PIni.Read("DB", "DatabasePort");
             DatabaseID = Helper.PIni.Read("DB", "DatabaseID");
@@ -149,6 +169,8 @@ namespace PLAutoMapper.ViewModels
             Helper.PIni.Write("Equipment", "PLID", PLID);
             Helper.PIni.Write("Etc", "CopyOption", CopyOption);
             Helper.PIni.Write("Etc", "AxisFontSize", AxisFontSize.ToString());
+            Helper.PIni.Write("Etc", "AutoDelete", AutoDelete);
+            Helper.PIni.Write("Etc", "SendRecycleBin", SendRecycleBin);
             Helper.PIni.Write("DB", "DatabaseName", DatabaseName);
             Helper.PIni.Write("DB", "DatabasePort", DatabasePort);
             Helper.PIni.Write("DB", "DatabaseID", DatabaseID);

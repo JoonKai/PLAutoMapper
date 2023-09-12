@@ -176,8 +176,8 @@
                     <!--#region SettingTab 일반-3-->
                     <GroupBox Header="기타옵션" Grid.Column="2" Margin="4,4,4,4">
                         <StackPanel Margin="4" Orientation="Vertical">
-                            <CheckBox Content="자동 삭제 켜기/끄기" Height="25" VerticalContentAlignment="Center" />
-                            <CheckBox Content="휴지통보내기 켜기/끄기" Height="25" VerticalContentAlignment="Center" />
+                            <CheckBox IsChecked="{Binding AutoDelete, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Content="자동 삭제 켜기/끄기" Height="25" VerticalContentAlignment="Center" />
+                            <CheckBox IsChecked="{Binding SendRecycleBin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Content="휴지통보내기 켜기/끄기" Height="25" VerticalContentAlignment="Center" />
                             <CheckBox Content="기타" Height="25" VerticalContentAlignment="Center" />
                             <CheckBox Content="기타" Height="25" VerticalContentAlignment="Center" />
                         </StackPanel>
@@ -430,7 +430,7 @@
             <!--#endregion-->
             <!--#region SettingTab ETC-->
             <TabItem Header="기타">
-                <pag:EPIFolderMakerPage/>
+                <con:EPIJsonListControl Width="200" Height="200"/>
             </TabItem>
             <!--#endregion-->
         </TabControl>
