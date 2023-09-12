@@ -23,56 +23,45 @@ namespace PLAutoMapperControl.Controls.BaseControls
 
 
 
-        public string TextValue
+        public int TextValue
         {
-            get { return (string)GetValue(TextValueProperty); }
+            get { return (int)GetValue(TextValueProperty); }
             set { SetValue(TextValueProperty, value); }
         }
 
         // Using a DependencyProperty as the backing store for TextValue.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty TextValueProperty =
-            DependencyProperty.Register("TextValue", typeof(string), typeof(EPINumericUpDown), new FrameworkPropertyMetadata("",FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
+            DependencyProperty.Register("TextValue", typeof(int), typeof(EPINumericUpDown), new FrameworkPropertyMetadata(0,FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
 
 
 
-        private int numValue =0;
-
-        public int NumValue
-        {
-            get { return numValue; }
-            set 
-            { 
-                numValue = value;
-                txtNum.Text = value.ToString();
-            }
-        }
 
         public EPINumericUpDown()
         {
             InitializeComponent();
-            txtNum.Text = NumValue.ToString();
         }
 
         private void txtNum_TextChanged(object sender, TextChangedEventArgs e)
         {
+            int outValue;
             if(txtNum == null)
             {
                 return;
             }
-            if(!int.TryParse(txtNum.Text, out numValue))
-                txtNum.Text =numValue.ToString();
+            if(!int.TryParse(txtNum.Text, out outValue))
+                txtNum.Text =TextValue.ToString();
         }
 
         private void cmdUp_Click(object sender, RoutedEventArgs e)
         {
-            NumValue++;
+            TextValue++;
         }
 
         private void cmdDown_Click(object sender, RoutedEventArgs e)
         {
-            if(NumValue > 0)
+            if(TextValue > 0)
             {
-                NumValue--;
+                TextValue--;
             }
         }
 
@@ -80,13 +69,13 @@ namespace PLAutoMapperControl.Controls.BaseControls
         {
             if (e.Delta > 0)
             {
-                NumValue++;
+                TextValue++;
             }
             else if (e.Delta < 0)
             {
-                if (NumValue > 0)
+                if (TextValue > 0)
                 {
-                    NumValue--;
+                    TextValue--;
                 }
             }
         }

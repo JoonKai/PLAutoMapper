@@ -15,7 +15,7 @@ namespace PLAutoMapper.Models
         public string UserPassword { get; set; }
         public string PLID { get; set; }
         public string CopyOption { get; set; }
-        public string AxisFontSize { get; set; }
+        public int AxisFontSize { get; set; }
         public string DatabaseName { get; set; }
         public string DatabasePort { get; set; }
         public string DatabaseID { get; set; }

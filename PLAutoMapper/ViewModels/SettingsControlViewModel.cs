@@ -1,6 +1,7 @@
 ﻿using PLAutoMapper.Commands;
 using PLAutoMapper.Models;
 using PLAutoMapperLib.Helpers;
+using System;
 using System.Windows.Input;
 
 namespace PLAutoMapper.ViewModels
@@ -73,7 +74,7 @@ namespace PLAutoMapper.ViewModels
                 OnPropertyChanged("CopyOption");
             }
         }
-        public string AxisFontSize
+        public int AxisFontSize
         {
             get => settings.AxisFontSize;
             set
@@ -130,7 +131,7 @@ namespace PLAutoMapper.ViewModels
             ConnectionPassword = Helper.PIni.Read("Connection", "ConnectionPassword");
             PLID = Helper.PIni.Read("Equipment", "PLID");
             CopyOption = Helper.PIni.Read("Etc", "CopyOption");
-            AxisFontSize = Helper.PIni.Read("Etc", "AxisFontSize");
+            AxisFontSize = (Helper.PIni.Read("Etc", "AxisFontSize"))==""?0: Convert.ToInt32(Helper.PIni.Read("Etc", "AxisFontSize"));
             DatabaseName = Helper.PIni.Read("DB", "DatabaseName");
             DatabasePort = Helper.PIni.Read("DB", "DatabasePort");
             DatabaseID = Helper.PIni.Read("DB", "DatabaseID");
@@ -147,7 +148,7 @@ namespace PLAutoMapper.ViewModels
             Helper.PIni.Write("Connection", "ConnectionPassword", ConnectionPassword);
             Helper.PIni.Write("Equipment", "PLID", PLID);
             Helper.PIni.Write("Etc", "CopyOption", CopyOption);
-            Helper.PIni.Write("Etc", "AxisFontSize", AxisFontSize);
+            Helper.PIni.Write("Etc", "AxisFontSize", AxisFontSize.ToString());
             Helper.PIni.Write("DB", "DatabaseName", DatabaseName);
             Helper.PIni.Write("DB", "DatabasePort", DatabasePort);
             Helper.PIni.Write("DB", "DatabaseID", DatabaseID);
